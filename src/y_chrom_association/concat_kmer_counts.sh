@@ -4,7 +4,7 @@
 #SBATCH --array=6-231%30
 #SBATCH --output=/scratch/users/briannac/logs/concat_kmer_counts_%a.out
 #SBATCH --error=/scratch/users/briannac/logs/concat_kmer_counts_%a.err
-#SBATCH --time=1:00:00
+#SBATCH --time=10:00:00
 #SBATCH --mem=1G
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=briannac@stanford.edu

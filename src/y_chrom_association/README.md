@@ -1,4 +1,6 @@
 # Y Chrom Association
+Extracting k-mers and counts associated with y-chromosome.
+
 
 ## Storage
 - **Intermediate files**: ```HOME/blood_microbiome/intermediate_results/y_chrom_association```
@@ -21,17 +23,22 @@
     - ***Outputs***: ```../intermediate_files/kmers/<SAMPLE>.jellyfish.sex_microbes.jf```, ```../intermediate_files/kmers/<SAMPLE>.jellyfish.sex_microbes.fa```
 
 3. ✓ ```shared_kmers.sh```: Compute list of non-unique k-mers. Note: 23,038,807 kmers.
-    - ***Inputs***: ```../intermediate_files/kmers/<SAMPLE>.jellyfish.sex_microbes.fa```
-    - ***Outputs***: ```../intermediate_files/kmers/kmers.sex_microbes.list```
+    - ***Inputs***: ```../intermediate_files/y_chrom_association/<SAMPLE>.jellyfish.sex_microbes.fa```
+    - ***Outputs***: ```../intermediate_files/y_chrom_association/kmers.sex_microbes.list```
 
 4. ✓ ```query_kmers.sh```: Query each sample for count of each non-unique kmers (Can use get_unfinished_samples.ipynb to update finished/unfinished samples)
-    - ***Inputs***: ```../intermediate_files/kmers/kmers.sex_microbes.list```, ```../intermediate_files/kmers/<SAMPLE>.jellyfish.sex_microbes.jf```
-    - ***Outputs***: ```../intermediate_files/kmers/<SAMPLE>.query_counts.sex_microbes.txt```
+    - ***Inputs***: ```../intermediate_files/y_chrom_association/kmers.sex_microbes.list```, ```../intermediate_files/kmers/<SAMPLE>.jellyfish.sex_microbes.jf```
+    - ***Outputs***: ```../intermediate_files/y_chrom_association/<SAMPLE>.query_counts.sex_microbes.txt```
 
-5. ✓ ```split_kmer_counts.sh```: Compute count matrix of kmer x sample.   
-    - ***Inputs***:  ```../intermediate_files/kmers/<SAMPLE>.query_counts.kmers.unmapped_reads.list.txt```
-    - ***Outputs***: ```../results/kmers/kmer_counts.kmers.unmapped_reads.list.tsv```    
+5. ✓ ```split_kmer_counts.sh```: Splits each sample kmer counts into many different files/kmer sets for concatenation.
+    - ***Inputs***:  ```../intermediate_files/y_chrom_association/<SAMPLE>.query_counts.sex_microbes.txt```
+    - ***Outputs***: ```../intermediate_files/y_chrom_association//<SAMPLE>.query_counts.sex_microbes.<KMER_REGION>.txt```    
 
-6. ```concat_kmer_counts.sh```: Compute count matrix of kmer x sample.   ***TODO: Currently Running***
-    - ***Inputs***:  ```../intermediate_files/kmers/<SAMPLE>.query_counts.kmers.unmapped_reads.list.txt```
-    - ***Outputs***: ```../results/kmers/kmer_counts.kmers.unmapped_reads.list.tsv```
+6. ```concat_kmer_counts.sh```: Concatenates sample kmer counts for each region.
+    - ***Inputs***:  ```../intermediate_files/y_chrom_association/<SAMPLE>.query_counts.kmers.sex_microbes.list.txt```
+    - ***Outputs***: ```../intermediate_files/y_chrom_association/query_counts.sex_microbes.<KMER_REGION>.tsv```
+     ***Currently Running: ***
+     
+7. ```move_to_results.sh```: Move to permanent results directory.
+    - ***Inputs***: ```../intermediate_files/kmers/query_counts.sex_microbes.<KMER_REGION>.tsv```
+    - ***Outputs***: ```../results/kmers/query_counts.sex_microbes.<KMER_REGION>.tsv.gz```
