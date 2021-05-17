@@ -34,13 +34,10 @@ Extracting k-mers and counts associated with y-chromosome.
     - ***Inputs***:  ```../intermediate_files/y_chrom_association/<SAMPLE>/<SAMPLE>.query_counts.sex_microbes.txt```
     - ***Outputs***: ```../intermediate_files/y_chrom_association/<SAMPLE>/<SAMPLE>.query_counts.sex_microbes.<KMER_REGION>.txt```    
 
-6. ```concat_kmer_counts.sh```: Concatenates sample kmer counts for each region.
+6. ✓ ```concat_kmer_counts.sh```: Concatenates sample kmer counts for each region.
     - ***Inputs***:  ```../intermediate_files/y_chrom_association/<SAMPLE>/<SAMPLE>.query_counts.kmers.sex_microbes.list.txt```
-    - ***Outputs***: ```../intermediate_files/y_chrom_association/query_counts.sex_microbes.<KMER_REGION>.tsv```
+    - ***Outputs***: ```../results/y_chrom_association/query_counts.sex_microbes/query_counts.sex_microbes.<KMER_REGION>.tsv```
      ***Currently Running: 60/231 finished as of 5/12/2021***
      
-7. ```move_to_results.sh```: Move to permanent results directory.
-    - ***Inputs***: ```../intermediate_files/kmers/query_counts.sex_microbes.<KMER_REGION>.tsv```
-    - ***Outputs***: ```../results/kmers/query_counts.sex_microbes.<KMER_REGION>.tsv.gz```
-    
+  
 Note: Ran ``organize_directories.sh``` to reorganize file structure a bit to make linux commands run faster.
