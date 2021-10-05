@@ -68,13 +68,7 @@ do
             --report ${intermediate_file_dir}/${SAMPLE}_all.report --report-zero-counts \
             ${intermediate_file_dir}/$SAMPLE.tmp.fastq ${intermediate_file_dir}/${SAMPLE}_1.tmp.fastq ${intermediate_file_dir}/${SAMPLE}_2.tmp.fastq 
         fi
-        
-       # if [ ! -f "${intermediate_file_dir}/${SAMPLE}.species.bracken" ]; then
-       #     python /oak/stanford/groups/dpwall/computeEnvironments/Bracken-2.5/src/est_abundance.py \
-       #     -i ${intermediate_file_dir}/${SAMPLE}_all.report \
-       #     -k /oak/stanford/groups/dpwall/computeEnvironments/Bracken-2.5/database/database150mers.kmer_distrib \
-       #     -o ${intermediate_file_dir}/${SAMPLE}.species.bracken -l S 
-       # fi
+
 
     \rm ${intermediate_file_dir}/${SAMPLE}*tmp*
     done < $SCRATCH/tmp/tmp_kraken_align_$SLURM_ARRAY_TASK_ID.txt
