@@ -27,7 +27,9 @@ df_herpesvirus.drop('09C86428', inplace=True)
 herpes_6a_contig = 'kraken:taxid|32603|NC_001664.4'
 herpes_6b_contig = 'kraken:taxid|32604|NC_000898.1'
 herpes_7_contig = 'kraken:taxid|10372|NC_001716.2'
-herpes_contigs = [herpes_6a_contig, herpes_6b_contig, herpes_7_contig]
+herpes_4_contig = 'kraken:taxid|10376|NC_007605.1'
+herpes_contigs = [herpes_6a_contig, herpes_6b_contig, herpes_7_contig, herpes_4_contig]
+
 def GetCoverages(sample_name):
     sample_dir = BLOOD_MICROBIOME_PATH + 'intermediate_files/herpesvirus/%s' % sample_name
     with pysam.AlignmentFile(sample_dir + '.paired_aligned_to_hg38_herpes.sam', 'r') as samfile:
@@ -74,4 +76,4 @@ for c in [Counter({k:len(c[k][0]) for k in c}) for c in coverages.values()]:
     counter_sum = counter_sum + c
     
 
-np.save(BLOOD_MICROBIOME_PATH + 'results/herpesvirus/coverages.npy', coverages)
+np.save(BLOOD_MICROBIOME_PATH + 'results/herpesvirus/coverages_with_herpes4.npy', coverages)

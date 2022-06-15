@@ -124,5 +124,4 @@ done
 #for f in $MY_HOME/blood_microbiome/intermediate_files/herpesvirus/*.paired_aligned_to_hg38_herpes.sam; do
 #    (( i++ ))
 #    echo $f $i
-#    samtools view -F 0x800  -h  $f | head
-#done
+#    samtools view -F 

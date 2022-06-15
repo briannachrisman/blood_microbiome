@@ -3,8 +3,8 @@
 #SBATCH --partition=dpwall
 #SBATCH --output=/scratch/users/briannac/logs/get_coverages.out
 #SBATCH --error=/scratch/users/briannac/logs/get_coverages.err
-#SBATCH --time=5:00:00
-#SBATCH --mem=100GB
+#SBATCH --time=10:00:00
+#SBATCH --mem=200GB
 ####SBATCH --cpus-per-task=5
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=briannac@stanford.edu
